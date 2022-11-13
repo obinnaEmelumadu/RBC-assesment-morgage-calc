@@ -2,3 +2,8 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.icon {
+    width: 1.3em;
+    cursor: pointer;
+}

@@ -15,8 +15,8 @@ export interface PrePaymentPlan  {
 export enum PaymentFrequency {
     Weekly = 52,
     BiWeekly = 26,
-    Monthly = 24,
-    SemiMonthly = 12,
+    SemiMonthly = 24,
+    Monthly = 12,
 }
 
 export enum PrePaymentFrequency {

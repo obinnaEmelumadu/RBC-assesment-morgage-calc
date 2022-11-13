@@ -1,0 +1,139 @@
+
+<form>
+  <div class="form-row align-items-center border rounded p-3">
+    <p class="h4 border-bottom">Payment Plan</p>
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Mortgage Amount:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="The amount you expect to borrow from your financial institution. It is calculated as the purchase price of your home, minus the down payment plus any applicable mortgage loan insurance premium you have to pay."/>
+      </label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input type="number" class="form-control" step=".01" placeholder="0.00">
+      </div>  
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Interest Rate:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="Annual interest rate for this mortgage."/>
+      </label>
+      <div class="input-group mb-2">
+        <input type="number" class="form-control" step=".01" placeholder="0.00">
+        <div class="input-group-append">
+          <div class="input-group-text">%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Amortization Period:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="The number of years and months over which you will repay this loan. The most common amortization period is 25 years. Not to be confused with the term of your loan, which is the duration of the loan agreement you signed with your financial institution and that has to be renewed regularly. Terms are generally for 1 to 10 years."/>
+      </label>
+      <div class="row">
+        <div class="col-sm">
+          <div class="input-group mb-2">
+            <select class="form-select">
+              <option selected>years</option>
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3">3 Years</option>
+              <option value="4">4 Years</option>
+              <option value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+              <option value="8">8 Years</option>
+              <option value="9">9 Years</option>
+              <option value="10">10 Years</option>
+              <option value="11">11 Year</option>
+              <option value="12">12 Years</option>
+              <option value="13">13 Years</option>
+              <option value="14">14 Years</option>
+              <option value="15">15 Years</option>
+              <option value="16">16 Years</option>
+              <option value="17">17 Years</option>
+              <option value="18">18 Years</option>
+              <option value="19">19 Years</option>
+              <option value="20">20 Years</option>
+              <option value="21">21 Year</option>
+              <option value="22">22 Years</option>
+              <option value="23">23 Years</option>
+              <option value="24">24 Years</option>
+              <option value="25">25 Years</option>
+              <option value="26">26 Years</option>
+              <option value="27">27 Years</option>
+              <option value="28">28 Years</option>
+              <option value="29">29 Years</option>
+              <option value="30">30 Years</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="input-group mb-2">
+            <select class="form-select">
+              <option selected></option>
+              <option value="1">1 Month</option>
+              <option value="2">2 Months</option>
+              <option value="3">3 Months</option>
+              <option value="4">4 Months</option>
+              <option value="5">5 Months</option>
+              <option value="6">6 Months</option>
+              <option value="7">7 Months</option>
+              <option value="8">8 Months</option>
+              <option value="9">9 Months</option>
+              <option value="10">10 Months</option>
+              <option value="11">11 Months</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Payment Frequency:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="By choosing an accelerated payment frequency, you can reduce your amortization period and save thousands of dollars in interest in the long run. For example, the accelerated bi-weekly payment allows you to pay half of your monthly payment every two weeks. You will therefore make 26 payments a year, the equivalent of one extra monthly payment a year."/>
+      </label>
+      <div class="input-group mb-2">
+        <select class="form-select">
+          <option selected>select the payment frequency</option>
+          <option value={{paymentFrequency.Weekly}}>Weekly</option>
+          <option value={{paymentFrequency.BiWeekly}}>Bi-Weekly</option>
+          <option value={{paymentFrequency.SemiMonthly}}>Semi-Monthly</option>
+          <option value={{paymentFrequency.Monthly}}>Monthly</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Term:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="The number of term years."/>
+      </label>
+      <div class="input-group mb-2">
+        <select class="form-select">
+          <option selected>select the number of term years</option>
+          <option value="1">One Year</option>
+          <option value="2">Two Years</option>
+          <option value="3">Three Years</option>
+          <option value="4">Four Years</option>
+          <option value="5">Five Years</option>
+          <option value="6">Six Years</option>
+          <option value="7">Seven Years</option>
+          <option value="8">Eight Years</option>
+          <option value="9">Nine Years</option>
+          <option value="10">Ten Years</option>
+        </select>
+      </div>
+    </div>
+    
+  </div>
+</form>

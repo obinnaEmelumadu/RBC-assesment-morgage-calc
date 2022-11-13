@@ -19,4 +19,5 @@ export class AppComponent {
     frequency: payModels.PrePaymentFrequency.OneTime,
     startPayment: 0
   }
+  showCalc = false;
 }

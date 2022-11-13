@@ -1,0 +1,44 @@
+
+<form>
+  <div class="form-row align-items-center border rounded p-3">
+    <p class="h4 border-bottom">Payment Plan</p>
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Prepayment Amount:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="Amount that you will prepay on your mortgage. This amount will be applied to the mortgage principal balance, at a frequency of prepayments that you determine."/>
+      </label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input type="number" class="form-control" step=".01" placeholder="0.00">
+      </div>  
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Amortization Period:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="The frequency under which you will make prepayments on your mortgage. The options are one time payment, yearly and the same as regular payment."/>
+      </label>
+      <div class="input-group mb-2">
+        <select class="form-select">
+          <option value={{prepaymentFrequency.OneTime}}>One time</option>
+          <option value={{prepaymentFrequency.EachYear}}>Each year</option>
+          <option value={{prepaymentFrequency.SameAsRegular}}>Same as regular payment</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleFormControlInput1" class="form-label">
+        Start with Payment:
+        <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
+        title="This is the payment number that your prepayments will begin with. For a one time payment, this is the payment number that the single prepayment will be included in. All prepayments of principal are assumed to be received by your lender in time to be included in the following month's interest calculation."/>
+      </label>
+      <input type="number" class="form-control">
+    </div>
+    
+  </div>
+</form>

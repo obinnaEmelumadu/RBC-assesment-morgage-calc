@@ -1,14 +1,17 @@
-<div ngbDropdown class="d-inline-block m-2" >
-	<button type="button" class="btn btn-outline-primary" id="dropdown1" ngbDropdownToggle>Toggle dropdown</button>
-	<div ngbDropdownMenu aria-labelledby="dropdown1">
-		<!-- items as buttons -->
-		<button ngbDropdownItem>Button (enabled)</button>
-		<button ngbDropdownItem [disabled]="true">Button (disabled, not focusable)</button>
-		<button ngbDropdownItem [class.disabled]="true" aria-disabled="true">Button (disabled, focusable)</button>
-
-		<!-- items as links -->
-		<a href="#" ngbDropdownItem>Link (enabled)</a>
-		<a href="#" ngbDropdownItem [disabled]="true">Link (disabled, not focusable)</a>
-		<a href="#" ngbDropdownItem [class.disabled]="true" aria-disabled="true">Link (disabled, focusable)</a>
+<div ngbDropdown class="m-2" >
+	<div class="row  justify-content-md-center">
+		<div class="col-sm m-1">
+			<app-payment></app-payment>
+		</div>
+		<div class="col-sm m-1">
+			<app-pre-payment></app-pre-payment>
+		</div>
 	</div>
+	<br>
+	<button type="button" class="btn btn-primary" (click)="showCalc=true">Calculate...</button>
+	<br>
+	<div *ngIf="showCalc">
+		<app-output-table></app-output-table>
+	</div>
+	<br><br><br>	
 </div>
