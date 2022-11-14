@@ -8,7 +8,7 @@ export interface PaymentPlan  {
 
 export interface PrePaymentPlan  {
     prePaymentAmount: number,//decimal
-    frequency: PrePaymentFrequency
+    frequency: PrePaymentFrequency,
     startPayment: number
 }
 
@@ -23,4 +23,13 @@ export enum PrePaymentFrequency {
     OneTime,
     EachYear,
     SameAsRegular
+}
+
+export interface output{
+    totalTerm: number,
+    totalPeriod: number,
+    interest: number,
+    totalAmount: number,
+    averagePayment: number,
+    averageAmortizePayment: number 
 }
