@@ -34,12 +34,27 @@ export class AppComponent {
     this.setPrePaymentPlan(this.prepayment.getValue());
 
     if(this.paymentPlan){
-      this.output.totalTerm = payFunctions.calculateTerm(
-        this.paymentPlan.term, this.paymentPlan.frequency);
-      this.output.totalPeriod = payFunctions.calculatePeriod(
+      this.output.totalYears = payFunctions.calculateTotalYears(
+        this.paymentPlan.period
+      );
+      
+      this.output.totalPaymentAmount = payFunctions.calcPeriodAmount(
         this.paymentPlan.period, this.paymentPlan.frequency
       );
       
+      [this.output.interest, this.output.totalAmount] = payFunctions.calcIntrestAndTotal(
+        this.paymentPlan.mortgageAmount, this.output.totalYears,
+        this.paymentPlan.interestRate, this.paymentPlan.frequency
+      );
+      
+      this.output.averagePayment = payFunctions.calcMortgagePayment(
+        this.output.totalAmount, this.paymentPlan.term
+      );
+
+      this.output.averageAmortizePayment = payFunctions.calcAmortiMortgagePayment(
+        this.output.totalAmount, this.paymentPlan.period
+      );
+
       this.showCalc = true;
     }
 

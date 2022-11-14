@@ -17,6 +17,7 @@ export enum PaymentFrequency {
     BiWeekly = 26,
     SemiMonthly = 24,
     Monthly = 12,
+    Yearly = 1,
 }
 
 export enum PrePaymentFrequency {
@@ -26,8 +27,8 @@ export enum PrePaymentFrequency {
 }
 
 export interface output{
-    totalTerm: number,
-    totalPeriod: number,
+    totalYears: number,
+    totalPaymentAmount: number,
     interest: number,
     totalAmount: number,
     averagePayment: number,

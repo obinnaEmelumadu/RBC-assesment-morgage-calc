@@ -5,18 +5,19 @@ export function calculatePeriod( periodYears: number, periodMonths: number){
     return newPeriod
 }
 
-//calculateTerm(term: number, frequency) return based on frequency
-export function calculateTerm(term: number, frequency: PaymentFrequency){
-    return term * frequency;
+// return based on frequency
+export function calcPeriodAmount(period: number, frequency: PaymentFrequency){
+    return period * (frequency/12);
 }
-//calcAmortizationPeriod(period: number, frequency) return based on frequency
-export function calcAmortizationPeriod(period: number, frequency: PaymentFrequency){
-    return period * frequency;
+//return based on frequency
+export function calculateTotalYears(time: number){
+    return time / 12;
 }
 
 //calcIntrest()Use the compund intrest calculator based on frequency (CI = P*(1 + R/n) (nt) – P)
-// n = Number of Times interest is paied per year/unit
+// numberOfPayments = Number of Times interest is paied per year/unit
 // rate = percent (not decimal)
+// time =  in years
 export function calcIntrestAndTotal (
         principal: number, time: number, 
         rate: number, numberOfPayments: number)  {
