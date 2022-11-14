@@ -34,4 +34,30 @@ describe('PaymentComponent', () => {
     
     expect(value).toEqual(mockPrepayValue);
   });
+  
+  it('setPeriod should set the period to the months returned by calculatePeriod', () => {
+    let p = component.paymentForm.get('period')?.value;
+    expect(p).toEqual(300);
+
+    component.periodYears = 10;
+    component.periodMonths = 5;
+    component.setPeriod();
+
+    let p2 = component.paymentForm.get('period')?.value;
+
+    expect(p2).not.toEqual(p);
+    expect(p2).toEqual(125);
+  });
+
+  it('onChangeMonths should set Month', () => {
+    component.onChangeMonths("3");
+
+    expect(component.periodMonths).toEqual(3);
+  });
+
+  it('onChangeyears should set year', () => {
+    component.onChangeYears("3");
+
+    expect(component.periodYears).toEqual(3);
+  });
 });
