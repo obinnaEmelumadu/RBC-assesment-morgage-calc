@@ -1,6 +1,6 @@
 export interface PaymentPlan  {
-    morgageAmount: number,//decimal
-    intrestRate: number,//percent
+    mortgageAmount: number,//decimal
+    interestRate: number,//percent
     period: number,//months, convert years
     frequency: PaymentFrequency
     term: number

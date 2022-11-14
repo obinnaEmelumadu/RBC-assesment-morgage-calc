@@ -50,16 +50,16 @@ export class PaymentComponent implements OnInit {
   onChangeMonths($event: string){
     const value = parseInt($event);
     this.periodMonths = value;
-    this.calculatePeriod();
+    this.setPeriod();
   }
 
   onChangeYears($event: string){
     const value = parseInt($event);
     this.periodYears = value;
-    this.calculatePeriod();
+    this.setPeriod();
   }
 
-  calculatePeriod(){
+  setPeriod(){
     this.paymentForm.get('period')?.setValue(
       calculatePeriod(
         this.periodYears,

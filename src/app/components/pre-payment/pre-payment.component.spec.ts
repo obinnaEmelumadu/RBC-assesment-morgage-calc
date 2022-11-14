@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PrePaymentFrequency, PrePaymentPlan } from '../../models';
 
 import { PrePaymentComponent } from './pre-payment.component';
 
@@ -19,5 +20,16 @@ describe('PrePaymentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return a value for getValue()', () => {
+    const mockPrepayValue: PrePaymentPlan = {
+      frequency: PrePaymentFrequency.OneTime,
+      prePaymentAmount: 0,
+      startPayment: 1
+    }
+    const value =  component.getValue();
+    
+    expect(value).toEqual(mockPrepayValue);
   });
 });

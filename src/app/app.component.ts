@@ -7,17 +7,7 @@ import * as payModels from './models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  paymentPlan:payModels.PaymentPlan = {
-    morgageAmount: 0,
-    intrestRate: 0,
-    period: 0,
-    frequency: payModels.PaymentFrequency.Weekly,
-    term: 0
-  }
-  prePaymentPlan:payModels.PrePaymentPlan = {
-    prePaymentAmount: 0,
-    frequency: payModels.PrePaymentFrequency.OneTime,
-    startPayment: 0
-  }
+  paymentPlan!: payModels.PaymentPlan;
+  prePaymentPlan!: payModels.PrePaymentPlan;
   showCalc = false;
 }
