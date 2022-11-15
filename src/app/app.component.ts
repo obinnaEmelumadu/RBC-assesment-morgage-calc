@@ -43,9 +43,7 @@ export class AppComponent {
       );
       
       [this.output.interest, this.output.totalAmount] = payFunctions.calcIntrestAndTotal(
-        this.paymentPlan.mortgageAmount, this.output.totalYears,
-        this.paymentPlan.interestRate, this.paymentPlan.frequency
-      );
+          { principal: this.paymentPlan.mortgageAmount, time: this.output.totalYears, rate: this.paymentPlan.interestRate, numberOfPayments: this.paymentPlan.frequency }      );
       
       this.output.averagePayment = payFunctions.calcMortgagePayment(
         this.output.totalAmount, this.paymentPlan.term

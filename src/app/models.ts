@@ -34,3 +34,10 @@ export interface output{
     averagePayment: number,
     averageAmortizePayment: number 
 }
+
+export interface intrestModel{ 
+    principal: number; 
+    time: number; 
+    rate: number; 
+    numberOfPayments: number; 
+}

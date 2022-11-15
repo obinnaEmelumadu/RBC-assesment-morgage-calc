@@ -1,3 +1,4 @@
+import { intrestMockData } from 'src/test/mockData';
 import * as functions from './functions';
 import * as models from './models';
 
@@ -59,15 +60,10 @@ describe('functions', () => {
 
     describe('calcIntrestAndTotal ', () => {
       it('should return coumpund intrest and the total', () => {
-        const Principal	= 100000
-        const Rate	= 5
-        const years	= 1
-        const frequency	= 12
-
-        const [interest, totalAmount] = functions.calcIntrestAndTotal (Principal, years, Rate, frequency);
+        const [interest, totalAmount] = functions.calcIntrestAndTotal (intrestMockData.model);
   
-        expect(totalAmount).toBeCloseTo(105116.18,1);
-        expect(interest).toBeCloseTo(5116.18,1);
+        expect(totalAmount).toBeCloseTo(intrestMockData.totalAmount,1);
+        expect(interest).toBeCloseTo(intrestMockData.interest,1);
       });
     });
   });

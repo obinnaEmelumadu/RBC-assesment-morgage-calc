@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import * as payModels from './models';
-import * as payFunctions from './functions';
-import { By } from '@angular/platform-browser';
+import { paymentmockmodel, prePaymentmockmodel } from '../test/mockData';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PrePaymentComponent } from './components/pre-payment/pre-payment.component';
 
@@ -75,19 +74,6 @@ describe('AppComponent', () => {
   });
 
   it('should calculate the output model', () => { 
-    const paymentmockmodel = {
-      mortgageAmount: 500,
-      interestRate: 5,
-      period: 99,
-      frequency: payModels.PaymentFrequency.Weekly,
-      term: 6
-    };
-    const prePaymentmockmodel = {
-      prePaymentAmount: 500,
-      startPayment: 5,
-      frequency: payModels.PrePaymentFrequency.OneTime,
-    };
-
     paymentComponet.getValue = ()=>{
       return paymentmockmodel;
     };
@@ -105,7 +91,7 @@ describe('AppComponent', () => {
 
     app.calculateOutput();
 
-    expect(prepaymentComponetSpy).toHaveBeenCalled();
+    expect(paymentComponetSpy).toHaveBeenCalled();
     expect(prepaymentComponetSpy).toHaveBeenCalled();
     expect(app.showCalc).toBe(true);
   });
