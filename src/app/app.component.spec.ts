@@ -52,11 +52,12 @@ describe('AppComponent', () => {
 
     app.setPaymentPlan(model);
 
-    expect(app.paymentPlan).toBe(model);
+    expect(app.paymentPlan).toEqual(model);
+    app.setPaymentPlan(null);
+    expect(app.prePaymentPlan).toBeUndefined()
   });
 
   it('setPrePaymentPlan should set the value of prePaymentPlan', () => {
-
     const model = {
       prePaymentAmount: 500,
       startPayment: 5,
@@ -65,7 +66,9 @@ describe('AppComponent', () => {
 
     app.setPrePaymentPlan(model);
 
-    expect(app.prePaymentPlan).toBe(model);
+    expect(app.prePaymentPlan).toEqual(model);
+    app.setPrePaymentPlan(null);
+    expect(app.prePaymentPlan).toBeNull();
   });
 
   it('should create instance of components', () => {
@@ -94,6 +97,47 @@ describe('AppComponent', () => {
     expect(paymentComponetSpy).toHaveBeenCalled();
     expect(prepaymentComponetSpy).toHaveBeenCalled();
     expect(app.showCalc).toBe(true);
+
+    app.prePaymentPlan.prePaymentAmount = 200;
+    spyOn(app, 'applyPrepayment');
+    app.calculateOutput();
+    expect(app.applyPrepayment).toHaveBeenCalled();
+    
+  });
+
+  it('applyPrepayment should alert if prePaymentAmount  is too high', () => {
+    app.paymentPlan = paymentmockmodel;
+    app.prePaymentPlan = prePaymentmockmodel;
+    app.prePaymentPlan.prePaymentAmount = 2100000;
+    spyOn(window, 'alert');
+
+    app.applyPrepayment();
+    expect(window.alert).toHaveBeenCalledWith('The Prepayment amount must not be greater than the principal');
+  });
+
+  it('applyPrepayment should reduce the mortgageAmount by 2000', () => {
+    app.paymentPlan = paymentmockmodel;
+    const model = {
+      prePaymentAmount: 20000,
+      startPayment: 1,
+      frequency: payModels.PrePaymentFrequency.OneTime,
+    } as payModels.PrePaymentPlan;
+
+    app.setPrePaymentPlan(model);
+    app.prePaymentPlan.prePaymentAmount = 20000;
+
+    app.applyPrepayment();
+    expect(app.paymentPlan.mortgageAmount).toBe(80000);
+  });
+
+  it('applyPrepayment should alert if prepaument is too high', () => {
+    app.paymentPlan = paymentmockmodel;
+    app.prePaymentPlan = prePaymentmockmodel;
+    app.prePaymentPlan.prePaymentAmount = 20000;
+    app.prePaymentPlan.frequency = payModels.PrePaymentFrequency.EachYear;
+    spyOn(window, 'alert');
+    app.applyPrepayment();
+    expect(window.alert).toHaveBeenCalled();
   });
 
 });

@@ -19,11 +19,13 @@ export class AppComponent {
   @ViewChild('prepayment') prepayment!: PrePaymentComponent;
 
   setPaymentPlan(values: any){
-    this.paymentPlan = {...values} as payModels.PaymentPlan;
+    const obj = (values) ? {...values} : null;
+    this.paymentPlan = obj as payModels.PaymentPlan;
   }
 
   setPrePaymentPlan(values: any){
-    this.prePaymentPlan = {...values} as payModels.PrePaymentPlan;
+    const obj = (values) ? {...values} : null;
+    this.prePaymentPlan = obj as payModels.PrePaymentPlan;
   }
 
   calculateOutput(){
@@ -57,6 +59,10 @@ export class AppComponent {
 
     for( let i=period; i > 0; i-=rate){
       amount -= this.prePaymentPlan.prePaymentAmount;
+      if (amount <= 0){
+        alert(`A pre-payment of $${this.paymentPlan.mortgageAmount} over ${this.paymentPlan.period} months will pay back this debt`);
+      return;
+      }
     }
     
     this.paymentPlan.mortgageAmount = amount;

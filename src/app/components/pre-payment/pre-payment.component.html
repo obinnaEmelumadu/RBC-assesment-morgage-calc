@@ -1,7 +1,7 @@
 
 <form  [formGroup]="prepaymentForm" >
   <div class="form-row align-items-center border rounded p-3">
-    <p class="h4 border-bottom">Payment Plan</p>
+    <p class="h4 border-bottom">Pre-Payment Plan</p>
     <div class="col-auto">
       <label for="exampleFormControlInput1" class="form-label">
         Prepayment Amount:
@@ -31,14 +31,14 @@
       </div>
     </div>
 
-    <div class="col-auto">
+    <!-- <div class="col-auto">
       <label for="exampleFormControlInput1" class="form-label">
         Start with Payment:
         <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
         title="This is the payment number that your prepayments will begin with. For a one time payment, this is the payment number that the single prepayment will be included in. All prepayments of principal are assumed to be received by your lender in time to be included in the following month's interest calculation."/>
       </label>
       <input type="number" class="form-control" formControlName="startPayment">
-    </div>
+    </div> -->
     
   </div>
 </form>

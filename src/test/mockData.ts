@@ -1,16 +1,16 @@
 import * as payModels from '../app/models';
 
 export const paymentmockmodel = {
-    mortgageAmount: 500,
+    mortgageAmount: 100000,
     interestRate: 5,
-    period: 99,
+    period: 120,
     frequency: payModels.PaymentFrequency.Weekly,
-    term: 6
+    term: 5
   };
 
 export const prePaymentmockmodel = {
-    prePaymentAmount: 500,
-    startPayment: 5,
+    prePaymentAmount: 0,
+    startPayment: 1,
     frequency: payModels.PrePaymentFrequency.OneTime,
   };
 
