@@ -1,8 +1,8 @@
 import { intrestModel, PaymentFrequency } from './models'
 
 export function calculatePeriod( periodYears: number, periodMonths: number){
-    const newPeriod  = (periodYears*12) + periodMonths;
-    return newPeriod
+    const periodInMonths  = (periodYears*12) + periodMonths;
+    return periodInMonths;
 }
 
 export function calcPeriodAmount(period: number, frequency: PaymentFrequency){

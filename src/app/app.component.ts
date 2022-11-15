@@ -19,11 +19,11 @@ export class AppComponent {
   @ViewChild('prepayment') prepayment!: PrePaymentComponent;
 
   setPaymentPlan(values: any){
-    this.paymentPlan = values as payModels.PaymentPlan;
+    this.paymentPlan = {...values} as payModels.PaymentPlan;
   }
 
   setPrePaymentPlan(values: any){
-    this.prePaymentPlan = values as payModels.PrePaymentPlan;
+    this.prePaymentPlan = {...values} as payModels.PrePaymentPlan;
   }
 
   calculateOutput(){
@@ -34,27 +34,51 @@ export class AppComponent {
     this.setPrePaymentPlan(this.prepayment.getValue());
 
     if(this.paymentPlan){
-      this.output.totalYears = payFunctions.calculateTotalYears(
-        this.paymentPlan.period
-      );
+      if (this.prePaymentPlan){
+        (this.prePaymentPlan.prePaymentAmount != 0) ? this.applyPrepayment() : null;
+      }
       
-      this.output.totalPaymentAmount = payFunctions.calcPeriodAmount(
-        this.paymentPlan.period, this.paymentPlan.frequency
-      );
-      
-      [this.output.interest, this.output.totalAmount] = payFunctions.calcIntrestAndTotal(
-          { principal: this.paymentPlan.mortgageAmount, time: this.output.totalYears, rate: this.paymentPlan.interestRate, numberOfPayments: this.paymentPlan.frequency }      );
-      
-      this.output.averagePayment = payFunctions.calcMortgagePayment(
-        this.output.totalAmount, this.paymentPlan.term
-      );
-
-      this.output.averageAmortizePayment = payFunctions.calcAmortiMortgagePayment(
-        this.output.totalAmount, this.output.totalPaymentAmount
-      );
+      this.calculateOutputModel();
 
       this.showCalc = true;
     }
+  }
 
+  applyPrepayment(){
+    if (this.prePaymentPlan.prePaymentAmount >= this.paymentPlan.mortgageAmount){
+      alert('The Prepayment amount must not be greater than the principal');
+      return;
+    }
+
+    let period = this.paymentPlan.period;
+    let amount = this.paymentPlan.mortgageAmount;
+    let rate = (this.prePaymentPlan.frequency == payModels.PrePaymentFrequency.EachYear) ?
+                12 : period;
+
+    for( let i=period; i > 0; i-=rate){
+      amount -= this.prePaymentPlan.prePaymentAmount;
+    }
+    
+    this.paymentPlan.mortgageAmount = amount;
+  }
+  calculateOutputModel(){
+    this.output.totalYears = payFunctions.calculateTotalYears(
+      this.paymentPlan.period
+    );
+    
+    this.output.totalPaymentAmount = payFunctions.calcPeriodAmount(
+      this.paymentPlan.period, this.paymentPlan.frequency
+    );
+    
+    [this.output.interest, this.output.totalAmount] = payFunctions.calcIntrestAndTotal(
+        { principal: this.paymentPlan.mortgageAmount, time: this.output.totalYears, rate: this.paymentPlan.interestRate, numberOfPayments: this.paymentPlan.frequency }      );
+    
+    this.output.averagePayment = payFunctions.calcMortgagePayment(
+      this.output.totalAmount, this.paymentPlan.term
+    );
+
+    this.output.averageAmortizePayment = payFunctions.calcAmortiMortgagePayment(
+      this.output.totalAmount, this.output.totalPaymentAmount
+    );
   }
 }
