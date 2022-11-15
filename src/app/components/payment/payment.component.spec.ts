@@ -34,6 +34,13 @@ describe('PaymentComponent', () => {
     
     expect(value).toEqual(mockPrepayValue);
   });
+
+  it('should return null for getValue()', () => {
+    component.paymentForm.get('interestRate')?.setValue(101);
+    const value =  component.getValue();
+    
+    expect(value).toEqual(null);
+  });
   
   it('setPeriod should set the period to the months returned by calculatePeriod', () => {
     let p = component.paymentForm.get('period')?.value;

@@ -1,6 +1,6 @@
 <h4 class="text-center">Calculation Summary</h4>
 
-<table class="table">
+<table class="table" *ngIf="output">
   <thead class="thead-light">
     <tr>
       <th scope="col">Category</th>
@@ -38,7 +38,7 @@
         <img src = "assets/help-circle-outline.svg" class="icon" data-toggle="tooltip"
         title="The amount you will pay per period during the Term and Amoritization respectively, which include a portion for the principal payment and a portion for the interest payment."/>
       </td>
-      <td>{{output.averagePayment| currency : 'USD' : 'symbol' : '1.1-2' }}</td>
+      <td>{{output.averageAmortizePayment| currency : 'USD' : 'symbol' : '1.1-2' }}</td>
     </tr>
     <tr>
       <td>

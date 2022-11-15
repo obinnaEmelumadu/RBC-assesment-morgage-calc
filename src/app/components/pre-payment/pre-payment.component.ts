@@ -25,7 +25,7 @@ export class PrePaymentComponent implements OnInit {
       ]),
       startPayment: new FormControl(1,[
         Validators.required,
-        Validators.min(0),
+        Validators.min(1),
       ]),
 
     });

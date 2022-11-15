@@ -18,9 +18,8 @@ export function calculateTotalYears(time: number){
 // numberOfPayments = Number of Times interest is paied per year/unit
 // rate = percent (not decimal)
 // time =  in years
-export function calcIntrestAndTotal (
-        principal: number, time: number, 
-        rate: number, numberOfPayments: number)  {
+export function calcIntrestAndTotal ( principal: number, time: number, 
+                                    rate: number, numberOfPayments: number)  {
     const totalAmount = principal * (Math.pow(
                                     (1 + (rate / (numberOfPayments*100)))
                                     , (numberOfPayments * time)));

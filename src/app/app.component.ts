@@ -52,7 +52,7 @@ export class AppComponent {
       );
 
       this.output.averageAmortizePayment = payFunctions.calcAmortiMortgagePayment(
-        this.output.totalAmount, this.paymentPlan.period
+        this.output.totalAmount, this.output.totalPaymentAmount
       );
 
       this.showCalc = true;

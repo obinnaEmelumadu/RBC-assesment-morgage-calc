@@ -32,4 +32,11 @@ describe('PrePaymentComponent', () => {
     
     expect(value).toEqual(mockPrepayValue);
   });
+
+  it('should return null for getValue()', () => {
+    component.prepaymentForm.get('startPayment')?.setValue(0);
+    const value =  component.getValue();
+    
+    expect(value).toEqual(null);
+  });
 });
