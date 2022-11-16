@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build  --base-href /docs/",
+    "build": "ng build  --base-href /RBC-assesment-morgage-calc/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage"
   },
