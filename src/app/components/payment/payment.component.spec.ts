@@ -9,9 +9,8 @@ describe('PaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
-    })
-    .compileComponents();
+      declarations: [PaymentComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaymentComponent);
     component = fixture.componentInstance;
@@ -27,24 +26,24 @@ describe('PaymentComponent', () => {
       frequency: PaymentFrequency.Monthly,
       interestRate: 5,
       mortgageAmount: 100000,
-      period: 120 ,
-      term: 5
-    }
-    const value =  component.getValue();
-    
+      period: 120,
+      term: 5,
+    };
+    const value = component.getValue();
+
     expect(value).toEqual(mockPrepayValue);
   });
 
   it('should return null for getValue()', () => {
     component.paymentForm.get('interestRate')?.setValue(101);
-    const value =  component.getValue();
-    
+    const value = component.getValue();
+
     expect(value).toEqual(null);
   });
-  
+
   it('setPeriod should set the period to the months returned by calculatePeriod', () => {
     let p = component.paymentForm.get('period')?.value;
-    expect(p).toEqual(120 );
+    expect(p).toEqual(120);
 
     component.periodYears = 10;
     component.periodMonths = 5;
@@ -57,13 +56,13 @@ describe('PaymentComponent', () => {
   });
 
   it('onChangeMonths should set Month', () => {
-    component.onChangeMonths("3");
+    component.onChangeMonths('3');
 
     expect(component.periodMonths).toEqual(3);
   });
 
   it('onChangeyears should set year', () => {
-    component.onChangeYears("3");
+    component.onChangeYears('3');
 
     expect(component.periodYears).toEqual(3);
   });

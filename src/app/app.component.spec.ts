@@ -12,15 +12,11 @@ describe('AppComponent', () => {
 
   let app: AppComponent;
   let paymentComponet: PaymentComponent;
-  let prepaymentComponet: PrePaymentComponent; 
+  let prepaymentComponet: PrePaymentComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-        PaymentComponent,
-        PrePaymentComponent
-      ],
+      declarations: [AppComponent, PaymentComponent, PrePaymentComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -29,7 +25,7 @@ describe('AppComponent', () => {
 
     app = fixture.componentInstance;
     paymentComponet = paymentfixture.componentInstance;
-    prepaymentComponet = prepaymentfixture.componentInstance; 
+    prepaymentComponet = prepaymentfixture.componentInstance;
   });
 
   it('should create the app', () => {
@@ -41,20 +37,19 @@ describe('AppComponent', () => {
   });
 
   it('setPaymentPlan should set the value of paymentPlan', () => {
-
     const model = {
       mortgageAmount: 500,
       interestRate: 5,
       period: 99,
       frequency: payModels.PaymentFrequency.Weekly,
-      term: 6
+      term: 6,
     } as payModels.PaymentPlan;
 
     app.setPaymentPlan(model);
 
     expect(app.paymentPlan).toEqual(model);
     app.setPaymentPlan(null);
-    expect(app.prePaymentPlan).toBeUndefined()
+    expect(app.prePaymentPlan).toBeUndefined();
   });
 
   it('setPrePaymentPlan should set the value of prePaymentPlan', () => {
@@ -76,19 +71,25 @@ describe('AppComponent', () => {
     expect(prepaymentComponet).toBeDefined();
   });
 
-  it('should calculate the output model', () => { 
-    paymentComponet.getValue = ()=>{
+  it('should calculate the output model', () => {
+    paymentComponet.getValue = () => {
       return paymentmockmodel;
     };
-    prepaymentComponet.getValue = ()=>{
+    prepaymentComponet.getValue = () => {
       return prePaymentmockmodel;
-    };;
+    };
     app.payment = paymentComponet;
-    app.prepayment = prepaymentComponet
+    app.prepayment = prepaymentComponet;
 
-    const paymentComponetSpy = spyOn(paymentComponet, "getValue").and.callThrough();
-    const prepaymentComponetSpy = spyOn(prepaymentComponet, "getValue").and.callThrough();
-    
+    const paymentComponetSpy = spyOn(
+      paymentComponet,
+      'getValue'
+    ).and.callThrough();
+    const prepaymentComponetSpy = spyOn(
+      prepaymentComponet,
+      'getValue'
+    ).and.callThrough();
+
     expect(app.showCalc).toBe(false);
 
     app.calculateOutput();
@@ -105,7 +106,9 @@ describe('AppComponent', () => {
     spyOn(window, 'alert');
 
     app.applyPrepayment();
-    expect(window.alert).toHaveBeenCalledWith('The Prepayment amount must not be greater than the principal');
+    expect(window.alert).toHaveBeenCalledWith(
+      'The Prepayment amount must not be greater than the principal'
+    );
   });
 
   it('applyPrepayment should reduce the mortgageAmount by 2000', () => {
@@ -132,5 +135,4 @@ describe('AppComponent', () => {
     app.applyPrepayment();
     expect(window.alert).toHaveBeenCalled();
   });
-
 });

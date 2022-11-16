@@ -9,9 +9,8 @@ describe('PrePaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrePaymentComponent ]
-    })
-    .compileComponents();
+      declarations: [PrePaymentComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PrePaymentComponent);
     component = fixture.componentInstance;
@@ -26,17 +25,17 @@ describe('PrePaymentComponent', () => {
     const mockPrepayValue: PrePaymentPlan = {
       frequency: PrePaymentFrequency.OneTime,
       prePaymentAmount: 0,
-      startPayment: 1
-    }
-    const value =  component.getValue();
-    
+      startPayment: 1,
+    };
+    const value = component.getValue();
+
     expect(value).toEqual(mockPrepayValue);
   });
 
   it('should return null for getValue()', () => {
     component.prepaymentForm.get('startPayment')?.setValue(0);
-    const value =  component.getValue();
-    
+    const value = component.getValue();
+
     expect(value).toEqual(null);
   });
 });
