@@ -67,9 +67,10 @@ describe('functions', () => {
       // });
       intrestMockData.forEach(element => {
         it(element.description, () => {
-          const [interest, totalAmount] = functions.calcIntrestAndTotal (element.model);
+          const [interest, principal, totalAmount] = functions.calcIntrestAndTotal (element.model);
     
           expect(totalAmount).toBeCloseTo(element.totalAmount,1);
+          expect(principal).toBeCloseTo(element.principal,1);
           expect(interest).toBeCloseTo(element.interest,1);
         });
       });

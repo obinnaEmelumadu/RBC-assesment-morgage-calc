@@ -7,13 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrePaymentComponent } from './components/pre-payment/pre-payment.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OutputTableComponent } from './components/output-table/output-table.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrePaymentComponent,
     PaymentComponent,
-    OutputTableComponent
+    OutputTableComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,

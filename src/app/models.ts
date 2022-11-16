@@ -30,6 +30,7 @@ export interface output{
     totalYears: number,
     totalPaymentAmount: number,
     interest: number,
+    principal: number,
     totalAmount: number,
     averagePayment: number,
     averageAmortizePayment: number 

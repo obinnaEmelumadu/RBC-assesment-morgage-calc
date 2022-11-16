@@ -12,7 +12,7 @@ export class PaymentComponent implements OnInit {
   paymentFrequency = PaymentFrequency;
   paymentForm!: FormGroup;
   periodMonths = 0;
-  periodYears = 25;
+  periodYears = 10;
 
   constructor() { }
 

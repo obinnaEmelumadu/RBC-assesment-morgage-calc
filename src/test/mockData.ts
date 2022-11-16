@@ -24,6 +24,7 @@ export const intrestMockData = [
       numberOfPayments: payModels.PaymentFrequency.Monthly
     } as payModels.intrestModel,
     interest: 5116.19,
+    principal: 100000,
     totalAmount: 105116.19
   },
   {
@@ -35,6 +36,7 @@ export const intrestMockData = [
       numberOfPayments: payModels.PaymentFrequency.Monthly*7.5
     } as payModels.intrestModel,
     interest: 3371.79,
+    principal: 10000,
     totalAmount: 13371.79
   },
   {
@@ -46,6 +48,7 @@ export const intrestMockData = [
       numberOfPayments: payModels.PaymentFrequency.Weekly*8
     } as payModels.intrestModel,
     interest: 54247.63,
+    principal: 200000,
     totalAmount: 254247.63
   }
 ]

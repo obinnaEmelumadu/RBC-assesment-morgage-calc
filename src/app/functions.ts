@@ -30,7 +30,7 @@ export function calcIntrestAndTotal (
                                     (1 + (rate / (numberOfPayments*100)))
                                     , (numberOfPayments * time)));
     const interest = totalAmount - principal;
-    return [interest, totalAmount];
+    return [interest, principal, totalAmount];
  };
 
 export function calcMortgagePayment(totalAmount: number, termNumber: number){

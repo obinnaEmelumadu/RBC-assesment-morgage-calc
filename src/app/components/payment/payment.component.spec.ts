@@ -27,7 +27,7 @@ describe('PaymentComponent', () => {
       frequency: PaymentFrequency.Monthly,
       interestRate: 5,
       mortgageAmount: 100000,
-      period: 300,
+      period: 120 ,
       term: 5
     }
     const value =  component.getValue();
@@ -44,7 +44,7 @@ describe('PaymentComponent', () => {
   
   it('setPeriod should set the period to the months returned by calculatePeriod', () => {
     let p = component.paymentForm.get('period')?.value;
-    expect(p).toEqual(300);
+    expect(p).toEqual(120 );
 
     component.periodYears = 10;
     component.periodMonths = 5;

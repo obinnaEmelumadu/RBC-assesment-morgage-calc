@@ -12,6 +12,7 @@
 	<br>
 	<div *ngIf="showCalc">
 		<app-output-table [output]="output"></app-output-table>
+		<app-graph [_data]="output"></app-graph>
 	</div>
 	<br><br><br>	
 </div>
