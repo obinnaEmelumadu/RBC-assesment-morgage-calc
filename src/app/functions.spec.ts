@@ -59,12 +59,6 @@ describe('functions', () => {
     });
 
     describe('calcIntrestAndTotal ', () => {
-      // it('should return coumpund intrest and the total', () => {
-      //   const [interest, totalAmount] = functions.calcIntrestAndTotal (intrestMockData.model);
-  
-      //   expect(totalAmount).toBeCloseTo(intrestMockData.totalAmount,1);
-      //   expect(interest).toBeCloseTo(intrestMockData.interest,1);
-      // });
       intrestMockData.forEach(element => {
         it(element.description, () => {
           const [interest, principal, totalAmount] = functions.calcIntrestAndTotal (element.model);

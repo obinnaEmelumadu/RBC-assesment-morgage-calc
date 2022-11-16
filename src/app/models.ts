@@ -1,13 +1,13 @@
 export interface PaymentPlan  {
-    mortgageAmount: number,//decimal
-    interestRate: number,//percent
+    mortgageAmount: number,
+    interestRate: number,
     period: number,//months, convert years
     frequency: PaymentFrequency
     term: number
 }
 
 export interface PrePaymentPlan  {
-    prePaymentAmount: number,//decimal
+    prePaymentAmount: number,
     frequency: PrePaymentFrequency,
     startPayment: number
 }

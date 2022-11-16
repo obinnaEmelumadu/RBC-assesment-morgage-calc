@@ -12,13 +12,9 @@ export function calculateTotalYears(time: number){
     return time / 12;
 }
 
-//calcIntrest()Use the compund intrest calculator based on frequency (CI = P*(1 + R/n) (nt) – P)
-// via https://www.calculatorsoup.com/calculators/financial/compound-interest-calculator.php
-// numberOfPayments = Number of Times interest is paied per year/unit
-// rate = percent (not decimal)
-// time =  in years
 /**
- * A function to calculate the user's cart.
+ * A function to calculate compound intrest 
+ * courtesy https://www.calculatorsoup.com/calculators/financial/compound-interest-calculator.php
  *
  * @param {{ principal: number, time: number, rate: number, numberOfPayments: number }} model
  * @returns {interest: number, totalAmount: number}
