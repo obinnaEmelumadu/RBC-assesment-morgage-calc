@@ -86,7 +86,6 @@ describe('AppComponent', () => {
     app.payment = paymentComponet;
     app.prepayment = prepaymentComponet
 
-
     const paymentComponetSpy = spyOn(paymentComponet, "getValue").and.callThrough();
     const prepaymentComponetSpy = spyOn(prepaymentComponet, "getValue").and.callThrough();
     
@@ -97,12 +96,6 @@ describe('AppComponent', () => {
     expect(paymentComponetSpy).toHaveBeenCalled();
     expect(prepaymentComponetSpy).toHaveBeenCalled();
     expect(app.showCalc).toBe(true);
-
-    app.prePaymentPlan.prePaymentAmount = 200;
-    spyOn(app, 'applyPrepayment');
-    app.calculateOutput();
-    expect(app.applyPrepayment).toHaveBeenCalled();
-    
   });
 
   it('applyPrepayment should alert if prePaymentAmount  is too high', () => {
