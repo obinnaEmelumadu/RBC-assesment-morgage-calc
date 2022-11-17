@@ -1,4 +1,4 @@
-import { intrestMockData } from 'src/test/mockData';
+import { intrestMockData, paymentmockmodel, prePaymentmockmodel } from 'src/test/mockData';
 import * as functions from './functions';
 import * as models from './models';
 
@@ -67,6 +67,43 @@ describe('functions', () => {
           expect(principal).toBeCloseTo(element.principal,1);
           expect(interest).toBeCloseTo(element.interest,1);
         });
+      });
+    });
+
+    describe('applyPrepayment ', () => {
+      let paymentPlan = {...paymentmockmodel} as models.PaymentPlan;
+      let prePaymentPlan = {...prePaymentmockmodel} as models.PrePaymentPlan;
+      it('applyPrepayment should alert if prePaymentAmount  is too high', () => {
+        paymentPlan = {...paymentmockmodel} as models.PaymentPlan;
+        prePaymentPlan.prePaymentAmount = 2100000;
+        spyOn(window, 'alert');
+    
+        functions.applyPrepayment(paymentPlan, prePaymentPlan);
+        expect(window.alert).toHaveBeenCalledWith(
+          'The Prepayment amount must not be greater than the principal'
+        );
+      });
+    
+      it('applyPrepayment should reduce the mortgageAmount by 2000', () => {
+        paymentPlan = {...paymentmockmodel} as models.PaymentPlan;
+        prePaymentPlan = {
+          prePaymentAmount: 20000,
+          startPayment: 1,
+          frequency: models.PrePaymentFrequency.OneTime,
+        } as models.PrePaymentPlan;
+    
+        functions.applyPrepayment(paymentPlan, prePaymentPlan);
+        expect(paymentPlan.mortgageAmount).toBe(80000);
+      });
+    
+      it('applyPrepayment should alert if prepaument is too high', () => {
+        paymentPlan = {...paymentmockmodel} as models.PaymentPlan;
+        prePaymentPlan = {...prePaymentmockmodel} as models.PrePaymentPlan;
+        prePaymentPlan.prePaymentAmount = 20000;
+        prePaymentPlan.frequency = models.PrePaymentFrequency.EachYear;
+        spyOn(window, 'alert');
+        functions.applyPrepayment(paymentPlan, prePaymentPlan);
+        expect(window.alert).toHaveBeenCalled();
       });
     });
   });

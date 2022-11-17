@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import * as payModels from './models';
+import * as payFunctions from './functions';
 import { paymentmockmodel, prePaymentmockmodel } from '../test/mockData';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PrePaymentComponent } from './components/pre-payment/pre-payment.component';
@@ -73,10 +74,10 @@ describe('AppComponent', () => {
 
   it('should calculate the output model', () => {
     paymentComponet.getValue = () => {
-      return paymentmockmodel;
+      return {...paymentmockmodel};
     };
     prepaymentComponet.getValue = () => {
-      return prePaymentmockmodel;
+      return {...prePaymentmockmodel};
     };
     app.payment = paymentComponet;
     app.prepayment = prepaymentComponet;
@@ -96,43 +97,7 @@ describe('AppComponent', () => {
 
     expect(paymentComponetSpy).toHaveBeenCalled();
     expect(prepaymentComponetSpy).toHaveBeenCalled();
+    expect(app.paymentPlan.mortgageAmount).toEqual(100000);
     expect(app.showCalc).toBe(true);
-  });
-
-  it('applyPrepayment should alert if prePaymentAmount  is too high', () => {
-    app.paymentPlan = paymentmockmodel;
-    app.prePaymentPlan = prePaymentmockmodel;
-    app.prePaymentPlan.prePaymentAmount = 2100000;
-    spyOn(window, 'alert');
-
-    app.applyPrepayment();
-    expect(window.alert).toHaveBeenCalledWith(
-      'The Prepayment amount must not be greater than the principal'
-    );
-  });
-
-  it('applyPrepayment should reduce the mortgageAmount by 2000', () => {
-    app.paymentPlan = paymentmockmodel;
-    const model = {
-      prePaymentAmount: 20000,
-      startPayment: 1,
-      frequency: payModels.PrePaymentFrequency.OneTime,
-    } as payModels.PrePaymentPlan;
-
-    app.setPrePaymentPlan(model);
-    app.prePaymentPlan.prePaymentAmount = 20000;
-
-    app.applyPrepayment();
-    expect(app.paymentPlan.mortgageAmount).toBe(80000);
-  });
-
-  it('applyPrepayment should alert if prepaument is too high', () => {
-    app.paymentPlan = paymentmockmodel;
-    app.prePaymentPlan = prePaymentmockmodel;
-    app.prePaymentPlan.prePaymentAmount = 20000;
-    app.prePaymentPlan.frequency = payModels.PrePaymentFrequency.EachYear;
-    spyOn(window, 'alert');
-    app.applyPrepayment();
-    expect(window.alert).toHaveBeenCalled();
   });
 });
